@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>SecureVault Privacy Policy</title>
+<!-- Static, no scripts, no trackers, no external requests. -->
+<style>
+:root{--bg:#f8fafc;--fg:#0f172a;--muted:#475569;--line:#e2e8f0;--accent:#4f46e5}
+@media (prefers-color-scheme:dark){:root{--bg:#0b1020;--fg:#e5e7eb;--muted:#94a3b8;--line:#1f2a44;--accent:#a5b4fc}}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:760px;margin:0 auto;padding:32px 16px 64px}
+h1{font-size:1.7rem;line-height:1.25} h2{margin-top:2.5rem;border-top:1px solid var(--line);padding-top:1.5rem}
+a{color:var(--accent)} code{font-size:.9em;word-break:break-word}
+table{border-collapse:collapse;width:100%;font-size:.93rem;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}
+p,li{color:var(--fg)} p:first-of-type{color:var(--muted)}
+</style>
+</head>
+<body><main>
+<h1>SecureVault — Privacy Policy / Політика конфіденційності</h1>
+<p>Effective date / Дата набрання чинності: 15 October 2026<br>
+App / Застосунок: SecureVault (<code>studio.osvald.securevault</code>), developer Osvald Studio</p>
+<ul><li><a href="#english">English</a></li><li><a href="#українська">Українська</a></li></ul>
+<h2 id="english">English</h2>
+<h3>Summary</h3>
+<p>SecureVault is an offline password vault. It does not collect, transmit, sell or share any personal or device data. The app has no internet permission, no account, no cloud sync, no advertising and no analytics or crash-reporting SDKs. Your vault exists only on your device, encrypted, and only you hold the key.</p>
+<h3>What the app processes on your device</h3>
+<table><thead><tr><th>Data</th><th>Why</th><th>Where it stays</th></tr></thead><tbody>
+<tr><td>Vault entries (titles, logins, passwords, notes and other fields you add)</td><td>The app's purpose</td><td>Local database in private app storage, each secret encrypted with AES-256-GCM using a key derived from your master password</td></tr>
+<tr><td>Master password</td><td>To lock and unlock the vault</td><td>Never stored. A key is derived from it with PBKDF2-HMAC-SHA256 and a random salt; only a verification hash and a wrapped vault key are kept, in <code>EncryptedSharedPreferences</code> (AES-256-GCM, Android Keystore)</td></tr>
+<tr><td>Recovery code (optional)</td><td>To regain access if you forget the master password</td><td>Shown once to you; the app keeps only a copy of the vault key wrapped with it. A wrong code simply fails to decrypt</td></tr>
+<tr><td>Fingerprint / face unlock (optional)</td><td>Faster unlock</td><td>Handled by Android's system biometric prompt; the vault key is wrapped by a Keystore key that only a successful biometric can use. The app never receives biometric data</td></tr>
+<tr><td>Settings (auto-lock time, theme, etc.)</td><td>To remember your preferences</td><td>Private app storage</td></tr>
+</tbody></table>
+<h3>Permissions and protections</h3>
+<ul><li><strong>Biometrics</strong> (<code>USE_BIOMETRIC</code>, <code>USE_FINGERPRINT</code>): to show the system biometric prompt.</li><li><strong>No network</strong>: the app does not declare the <code>INTERNET</code> permission, so it cannot send anything anywhere.</li><li><strong>No system backup</strong>: Android auto-backup and device-to-device transfer are disabled (<code>allowBackup="false"</code>, all data domains excluded in <code>data_extraction_rules</code>), so the encrypted vault is never copied to Google or to a new phone by the system.</li><li><strong>Screen protection</strong>: the app sets <code>FLAG_SECURE</code>, so screenshots and screen recording of the vault are blocked.</li><li><strong>Clipboard</strong>: when you copy a secret, it goes to the Android clipboard marked as sensitive, only because you tapped copy, and is cleared automatically after a short time.</li></ul>
+<p>The app does <strong>not</strong> request internet, contacts, storage, photos, camera, microphone, location, phone or SMS permissions.</p>
+<h3>Sharing, retention and deletion</h3>
+<p>No data leaves your device, so nothing is shared with the developer or any third party. The vault stays until you delete entries in the app, clear the app's storage (Android Settings → Apps → SecureVault → Storage → Clear storage) or uninstall the app. There is no server copy and no account to delete. If you lose both the master password and the recovery code, the data cannot be recovered by anyone, including the developer.</p>
+<h3>Children</h3>
+<p>The app is not directed at children and does not knowingly process children's data; it processes no personal data off-device at all.</p>
+<h3>Changes</h3>
+<p>If this policy changes, the updated version will be published at this address with a new effective date.</p>
+<h3>Contact</h3>
+<p>Osvald.studio26@gmail.com</p>
+<h2 id="українська">Українська</h2>
+<h3>Коротко</h3>
+<p>SecureVault — офлайн-сховище паролів. Він не збирає, не передає, не продає й не поширює жодних персональних даних чи даних пристрою. Застосунок не має дозволу на доступ до інтернету, акаунтів, хмарної синхронізації, реклами, аналітики чи SDK для звітів про збої. Ваше сховище існує лише на вашому пристрої, зашифроване, і ключ є тільки у вас.</p>
+<h3>Що застосунок обробляє на пристрої</h3>
+<table><thead><tr><th>Дані</th><th>Навіщо</th><th>Де зберігаються</th></tr></thead><tbody>
+<tr><td>Записи сховища (назви, логіни, паролі, нотатки та інші поля, які ви додаєте)</td><td>Призначення застосунку</td><td>Локальна база у приватному сховищі; кожен секрет зашифрований AES-256-GCM ключем, похідним від вашого головного пароля</td></tr>
+<tr><td>Головний пароль</td><td>Щоб блокувати й розблоковувати сховище</td><td>Ніколи не зберігається. Із нього за PBKDF2-HMAC-SHA256 із випадковою сіллю виводиться ключ; зберігаються лише хеш для перевірки та загорнутий ключ сховища в <code>EncryptedSharedPreferences</code> (AES-256-GCM, Android Keystore)</td></tr>
+<tr><td>Код відновлення (необов'язково)</td><td>Щоб повернути доступ, якщо забудете головний пароль</td><td>Показується вам один раз; застосунок зберігає лише копію ключа сховища, загорнуту цим кодом. Неправильний код просто не розшифрує</td></tr>
+<tr><td>Відбиток пальця / розпізнавання обличчя (необов'язково)</td><td>Швидше розблокування</td><td>Обробляє системне вікно біометрії Android; ключ сховища загорнутий ключем Keystore, який можна використати лише після успішної біометрії. Застосунок не отримує біометричних даних</td></tr>
+<tr><td>Налаштування (час автоблокування, тема тощо)</td><td>Щоб пам'ятати ваші вподобання</td><td>Приватне сховище застосунку</td></tr>
+</tbody></table>
+<h3>Дозволи та захист</h3>
+<ul><li><strong>Біометрія</strong> (<code>USE_BIOMETRIC</code>, <code>USE_FINGERPRINT</code>): щоб показати системне вікно біометрії.</li><li><strong>Без мережі</strong>: застосунок не оголошує дозволу <code>INTERNET</code>, тому нічого нікуди не може надіслати.</li><li><strong>Без системного резервного копіювання</strong>: автоматичне резервне копіювання Android і перенесення між пристроями вимкнені (<code>allowBackup="false"</code>, усі домени даних виключені в <code>data_extraction_rules</code>), тож система ніколи не копіює зашифроване сховище в Google чи на новий телефон.</li><li><strong>Захист екрана</strong>: застосунок встановлює <code>FLAG_SECURE</code>, тому знімки й запис екрана сховища заблоковані.</li><li><strong>Буфер обміну</strong>: коли ви копіюєте секрет, він потрапляє в буфер обміну Android із позначкою «конфіденційно», лише після вашого натискання, і автоматично очищається за короткий час.</li></ul>
+<p>Застосунок <strong>не</strong> запитує доступу до інтернету, контактів, файлів, фото, камери, мікрофона, геолокації, телефону чи SMS.</p>
+<h3>Передавання, зберігання й видалення</h3>
+<p>Дані не залишають пристрій, тому нічого не передається ні розробнику, ні третім сторонам. Сховище зберігається, доки ви не видалите записи в застосунку, не очистите сховище (Налаштування Android → Додатки → SecureVault → Пам'ять → Очистити сховище) або не видалите застосунок. Серверної копії й акаунта немає. Якщо ви втратите і головний пароль, і код відновлення, дані не зможе відновити ніхто, включно з розробником.</p>
+<h3>Діти</h3>
+<p>Застосунок не призначений спеціально для дітей і не обробляє персональних даних поза пристроєм.</p>
+<h3>Зміни</h3>
+<p>У разі змін оновлена політика з новою датою буде опублікована за цією адресою.</p>
+<h3>Контакт</h3>
+<p>Osvald.studio26@gmail.com</p>
+</main></body>
+</html>

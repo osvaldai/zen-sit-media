@@ -4,20 +4,20 @@ Goal: publish `clipsync/`, `kek/`, `moneta/`, `securevault/`, `giftfolio/` `priv
 
 ## Checklist
 - [x] Read manifests, gradle deps, network/crypto/permission code of all five apps
-- [ ] clipsync/privacy.html
-- [ ] kek/privacy.html
-- [ ] moneta/privacy.html
-- [ ] securevault/privacy.html
-- [ ] giftfolio/privacy.html
-- [ ] Links in index.html
-- [ ] HTML validation (python html.parser) + relative link check
-- [ ] Push branch `feat/privacy-pages-2026-10-15` (owner publishes)
+- [x] clipsync/privacy.html
+- [x] kek/privacy.html
+- [x] moneta/privacy.html
+- [x] securevault/privacy.html
+- [x] giftfolio/privacy.html
+- [x] Links in index.html
+- [x] HTML validation (python html.parser: 9 pages OK, exit 0; macOS tidy 2006 only complains about HTML5 `<main>` and UTF-8, same as the existing applockguard page) + relative link check
+- [x] Push branch `feat/privacy-pages-2026-10-15` (owner publishes)
 
 ## Files
 `clipsync/privacy.html`, `kek/privacy.html`, `moneta/privacy.html`, `securevault/privacy.html`, `giftfolio/privacy.html`, `index.html`, this plan.
 
 ## Verification
-`python3 -I tools/check_html.py` over every `*.html`: well-formed tags, no `<script>`, no external requests, every relative `href` resolves.
+`python3 -I check_html.py` (scratch script, not committed) over every `*.html`: well-formed tags, no `<script>`, no external requests, every relative `href` resolves.
 
 ## Findings / risks
 - GiftFolio *does* request `READ_CONTACTS` at runtime (only when importing from contacts, to read the picked contact's birthday); the page says so instead of "no permission".

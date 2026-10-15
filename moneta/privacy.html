@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>Moneta Privacy Policy</title>
+<!-- Static, no scripts, no trackers, no external requests. -->
+<style>
+:root{--bg:#f8fafc;--fg:#0f172a;--muted:#475569;--line:#e2e8f0;--accent:#4f46e5}
+@media (prefers-color-scheme:dark){:root{--bg:#0b1020;--fg:#e5e7eb;--muted:#94a3b8;--line:#1f2a44;--accent:#a5b4fc}}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:760px;margin:0 auto;padding:32px 16px 64px}
+h1{font-size:1.7rem;line-height:1.25} h2{margin-top:2.5rem;border-top:1px solid var(--line);padding-top:1.5rem}
+a{color:var(--accent)} code{font-size:.9em;word-break:break-word}
+table{border-collapse:collapse;width:100%;font-size:.93rem;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}
+p,li{color:var(--fg)} p:first-of-type{color:var(--muted)}
+</style>
+</head>
+<body><main>
+<h1>Moneta — Privacy Policy / Політика конфіденційності</h1>
+<p>Effective date / Дата набрання чинності: 15 October 2026<br>
+App / Застосунок: Moneta (<code>com.moneta.personalfinance</code>), developer Osvald Studio</p>
+<ul><li><a href="#english">English</a></li><li><a href="#українська">Українська</a></li></ul>
+<h2 id="english">English</h2>
+<h3>Summary</h3>
+<p>Moneta keeps your financial records on your device. There is no Moneta account, no Moneta server, no advertising and no analytics or crash-reporting SDKs; the developer never receives your data. The app connects to the internet only for features you turn on or use yourself: encrypted Google Drive backup, an AI assistant with a provider you choose, read-only exchange balances with your own API keys, public exchange-rate and price feeds, and public vehicle databases. Each is described below.</p>
+<h3>Data stored on your device</h3>
+<table><thead><tr><th>Data</th><th>Why</th><th>Where it stays</th></tr></thead><tbody>
+<tr><td>Incomes, expenses, accounts, subscriptions, credits, planned payments, crypto and stock holdings, car and apartment records, fuel logs, notes</td><td>The app's core purpose</td><td>Private app storage; Android auto-backup is disabled (<code>allowBackup="false"</code>)</td></tr>
+<tr><td>API keys, access tokens and the backup password</td><td>For the optional features below</td><td>Encrypted with a non-exportable AES-256-GCM key from the Android Keystore, in private app storage; unreadable if copied to another device</td></tr>
+<tr><td>Photos you attach (e.g. to a car or a record)</td><td>To show them in the app</td><td>Chosen through the Android photo picker and copied into private app storage; no storage permission is needed</td></tr>
+<tr><td>Receipt scans</td><td>To read the amount from a receipt</td><td>The camera image is processed on the device with ML Kit text recognition; the image is not stored or uploaded</td></tr>
+<tr><td>Manual export / import (JSON or CSV file)</td><td>To move your data yourself</td><td>Only to the file you pick through the Android file picker; exports can be protected with a password (AES-256-CBC + HMAC-SHA256, PBKDF2 key)</td></tr>
+<tr><td>Home-screen widget</td><td>To show totals</td><td>Local cache on the device</td></tr>
+</tbody></table>
+<h3>Optional features that use the internet</h3>
+<ul>
+<li><strong>Google Drive backup</strong> (off by default). When you turn it on, you sign in with Google (OAuth, scopes <code>drive.appdata</code> and <code>email</code>). Before upload every backup is encrypted on your device with a password only you know (AES-256-CBC with HMAC-SHA256, PBKDF2-HMAC-SHA256 key derivation); without the password the file cannot be opened, and the developer never has it. Backups go to the hidden app-data folder of <em>your</em> Google Drive; old copies are pruned according to your setting. The app shows the e-mail of the signed-in account and keeps the OAuth tokens encrypted locally. Google processes the sign-in and the stored file under <a href="https://policies.google.com/privacy">Google's privacy policy</a>. Signing out revokes the token.</li>
+<li><strong>AI assistant</strong> (off until you configure a provider). You choose the provider — OpenAI, Google Gemini, NVIDIA, xkiro, a custom OpenAI-compatible endpoint, or a local server on your phone (<code>127.0.0.1</code>) — and enter your own API key, which is stored encrypted on the device and sent only to that provider as an authorisation header. Each request sends your chat messages (the last 20), a short financial summary (monthly income, expenses, balance, total capital, savings rate, top five expense categories, number and total of subscriptions, number of credits), your category list, and your credit and subscription records (names, amounts, dates, payment accounts, categories — private notes are excluded). The car assistant sends the selected car's profile, maintenance plan and fuel logs. The provider processes this under its own privacy policy. Requests use HTTPS except to the local server on your own phone.</li>
+<li><strong>Exchange balances</strong> (optional). If you add a Binance or OKX API key, the app first checks with the exchange that the key is read-only (no trading or withdrawals) and refuses keys that are not. Keys are stored encrypted on the device and sent only to that exchange to read your balances and earn positions.</li>
+<li><strong>Rates and prices</strong>: exchange rates from the National Bank of Ukraine (<code>bank.gov.ua</code>), crypto prices from CoinGecko and stock quotes from Stooq. These requests contain only currency or ticker symbols, never your amounts or identity.</li>
+<li><strong>Vehicle lookup</strong> (only when you use it): VIN decoding and recalls from the U.S. NHTSA (<code>vpic.nhtsa.dot.gov</code>, <code>api.nhtsa.gov</code>), fuel-economy data from <code>fueleconomy.gov</code> (make, model, year), and, if you enter your own API key for it, Ukrainian registry data from <code>baza-gai.com.ua</code> (licence plate or VIN you typed).</li>
+<li><strong>Tips through Google Play Billing</strong>: optional one-time in-app purchases to support the developer. Payment is handled entirely by Google Play; the app never sees your payment details.</li>
+<li><strong>Google Wallet payment capture</strong> (optional, opt-in, available in builds that include it). If you turn it on and grant Notification access, the app reads notifications <em>only</em> from the Google Wallet app (<code>com.google.android.apps.walletnfcrel</code>), extracts amount, currency and merchant, and shows a local notification so you can categorise the expense. Nothing is read from other apps and nothing leaves the device. Revoke at any time in Android Settings → Notifications → Device &amp; app notifications.</li>
+</ul>
+<h3>Permissions</h3>
+<ul><li><strong>Internet / network state</strong> (<code>INTERNET</code>, <code>ACCESS_NETWORK_STATE</code>): for the optional features above and to schedule the Drive backup only when a network is available.</li><li><strong>Camera</strong> (<code>CAMERA</code>): receipt scanning, only while you use it; marked as not required.</li><li><strong>Start at boot</strong> (<code>RECEIVE_BOOT_COMPLETED</code>): to reschedule recurring-payment reminders and the backup job after a reboot.</li><li><strong>Notifications</strong> (<code>POST_NOTIFICATIONS</code>, where included): local reminders about recurring payments and captured payments.</li><li><strong>Storage</strong> (<code>READ_EXTERNAL_STORAGE</code>, Android 9 and older only): to import files on old Android versions.</li></ul>
+<p>The app does <strong>not</strong> request contacts, location, microphone, phone or SMS permissions.</p>
+<h3>Sharing, retention and deletion</h3>
+<p>Data is shared only with the services you choose to use, as listed above, and never with the developer. Local data stays until you delete it in the app, clear the app's storage (Android Settings → Apps → Moneta → Storage → Clear storage) or uninstall the app. Drive backups stay in your Google Drive until you delete them from the app's backup screen or from Drive settings (Manage apps). Data sent to an AI provider or exchange is retained by that provider under its own policy.</p>
+<h3>Children</h3>
+<p>The app is not directed at children and does not knowingly process children's data.</p>
+<h3>Changes</h3>
+<p>If this policy changes, the updated version will be published at this address with a new effective date.</p>
+<h3>Contact</h3>
+<p>Osvald.studio26@gmail.com</p>
+<h2 id="українська">Українська</h2>
+<h3>Коротко</h3>
+<p>Moneta зберігає ваші фінансові записи на вашому пристрої. Акаунта Moneta, сервера Moneta, реклами, аналітики чи SDK для звітів про збої немає; розробник ніколи не отримує ваших даних. Застосунок виходить в інтернет лише для функцій, які ви самі вмикаєте або використовуєте: зашифрована резервна копія в Google Drive, ШІ-асистент із обраним вами провайдером, баланси бірж за вашими власними ключами лише для читання, публічні курси валют і ціни, публічні бази даних авто. Кожна описана нижче.</p>
+<h3>Дані на вашому пристрої</h3>
+<table><thead><tr><th>Дані</th><th>Навіщо</th><th>Де зберігаються</th></tr></thead><tbody>
+<tr><td>Доходи, витрати, рахунки, підписки, кредити, заплановані платежі, крипто- й біржові активи, записи про авто та квартиру, журнал пального, нотатки</td><td>Основне призначення застосунку</td><td>Приватне сховище застосунку; автоматичне резервне копіювання Android вимкнене (<code>allowBackup="false"</code>)</td></tr>
+<tr><td>API-ключі, токени доступу та пароль резервної копії</td><td>Для необов'язкових функцій нижче</td><td>Зашифровані неекспортованим ключем AES-256-GCM з Android Keystore у приватному сховищі; на іншому пристрої їх не прочитати</td></tr>
+<tr><td>Фото, які ви додаєте (наприклад, до авто чи запису)</td><td>Щоб показувати їх у застосунку</td><td>Обираються через системний вибір фото Android і копіюються у приватне сховище; дозвіл на файли не потрібен</td></tr>
+<tr><td>Сканування чеків</td><td>Щоб зчитати суму з чека</td><td>Зображення з камери обробляється на пристрої (розпізнавання тексту ML Kit); не зберігається й не завантажується</td></tr>
+<tr><td>Ручний експорт / імпорт (файл JSON або CSV)</td><td>Щоб ви самі переносили дані</td><td>Лише у файл, який ви обираєте через системний вибір файлів; експорт можна захистити паролем (AES-256-CBC + HMAC-SHA256, ключ PBKDF2)</td></tr>
+<tr><td>Віджет на головному екрані</td><td>Щоб показувати підсумки</td><td>Локальний кеш на пристрої</td></tr>
+</tbody></table>
+<h3>Необов'язкові функції, що використовують інтернет</h3>
+<ul>
+<li><strong>Резервна копія в Google Drive</strong> (типово вимкнена). Коли ви її вмикаєте, ви входите в Google (OAuth, області <code>drive.appdata</code> і <code>email</code>). Перед завантаженням кожна копія шифрується на пристрої паролем, який знаєте лише ви (AES-256-CBC з HMAC-SHA256, ключ за PBKDF2-HMAC-SHA256); без пароля файл не відкрити, і розробник його не має. Копії потрапляють у приховану теку даних застосунку у <em>вашому</em> Google Drive; старі видаляються за вашим налаштуванням. Застосунок показує e-mail акаунта, яким ви увійшли, і зберігає OAuth-токени зашифровано локально. Google обробляє вхід і збережений файл за <a href="https://policies.google.com/privacy">політикою конфіденційності Google</a>. Вихід відкликає токен.</li>
+<li><strong>ШІ-асистент</strong> (вимкнений, доки ви не налаштуєте провайдера). Ви обираєте провайдера — OpenAI, Google Gemini, NVIDIA, xkiro, власний OpenAI-сумісний сервер або локальний сервер на вашому телефоні (<code>127.0.0.1</code>) — і вводите свій API-ключ, який зберігається зашифровано на пристрої й надсилається лише цьому провайдеру в заголовку авторизації. Кожен запит містить ваші повідомлення в чаті (останні 20), короткий фінансовий підсумок (дохід і витрати за місяць, баланс, капітал, норма заощаджень, п'ять найбільших категорій витрат, кількість і сума підписок, кількість кредитів), список категорій, а також записи кредитів і підписок (назви, суми, дати, рахунки, категорії — приватні нотатки не передаються). Автоасистент надсилає профіль обраного авто, план обслуговування та журнал пального. Провайдер обробляє це за власною політикою конфіденційності. Запити йдуть через HTTPS, крім локального сервера на вашому телефоні.</li>
+<li><strong>Баланси бірж</strong> (необов'язково). Якщо ви додаєте API-ключ Binance або OKX, застосунок спершу перевіряє на біржі, що ключ лише для читання (без торгівлі й виведення), і відхиляє інші. Ключі зберігаються зашифровано на пристрої й надсилаються лише цій біржі, щоб прочитати баланси та позиції Earn.</li>
+<li><strong>Курси й ціни</strong>: курси валют Національного банку України (<code>bank.gov.ua</code>), ціни криптовалют із CoinGecko, котирування акцій зі Stooq. Ці запити містять лише коди валют чи тікери — ніколи ваші суми чи особу.</li>
+<li><strong>Пошук даних авто</strong> (лише коли ви ним користуєтесь): розшифрування VIN і відкликання з NHTSA США (<code>vpic.nhtsa.dot.gov</code>, <code>api.nhtsa.gov</code>), дані витрати пального з <code>fueleconomy.gov</code> (марка, модель, рік) і, якщо ви введете власний API-ключ, дані українського реєстру з <code>baza-gai.com.ua</code> (введений вами номерний знак або VIN).</li>
+<li><strong>Чайові через Google Play Billing</strong>: необов'язкові разові покупки в застосунку на підтримку розробника. Оплату повністю обробляє Google Play; застосунок не бачить платіжних даних.</li>
+<li><strong>Захоплення платежів Google Wallet</strong> (необов'язково, за вашою згодою, у збірках, де є ця функція). Якщо ви її вмикаєте й надаєте доступ до сповіщень, застосунок читає сповіщення <em>лише</em> від додатка Google Wallet (<code>com.google.android.apps.walletnfcrel</code>), виділяє суму, валюту й продавця і показує локальне сповіщення, щоб ви обрали категорію витрати. Сповіщення інших додатків не читаються, нічого не залишає пристрій. Відкликати можна будь-коли: Налаштування Android → Сповіщення → Сповіщення пристрою та додатків.</li>
+</ul>
+<h3>Дозволи</h3>
+<ul><li><strong>Інтернет / стан мережі</strong> (<code>INTERNET</code>, <code>ACCESS_NETWORK_STATE</code>): для необов'язкових функцій вище та щоб планувати резервну копію лише за наявності мережі.</li><li><strong>Камера</strong> (<code>CAMERA</code>): сканування чеків, лише поки ви ним користуєтесь; позначена як необов'язкова.</li><li><strong>Запуск після перезавантаження</strong> (<code>RECEIVE_BOOT_COMPLETED</code>): щоб знову запланувати нагадування про регулярні платежі та завдання резервної копії.</li><li><strong>Сповіщення</strong> (<code>POST_NOTIFICATIONS</code>, де є): локальні нагадування про регулярні та захоплені платежі.</li><li><strong>Сховище</strong> (<code>READ_EXTERNAL_STORAGE</code>, лише Android 9 і старіші): щоб імпортувати файли на старих версіях Android.</li></ul>
+<p>Застосунок <strong>не</strong> запитує доступу до контактів, геолокації, мікрофона, телефону чи SMS.</p>
+<h3>Передавання, зберігання й видалення</h3>
+<p>Дані передаються лише сервісам, які ви самі обрали, як описано вище, і ніколи розробнику. Локальні дані зберігаються, доки ви не видалите їх у застосунку, не очистите сховище (Налаштування Android → Додатки → Moneta → Пам'ять → Очистити сховище) або не видалите застосунок. Копії в Drive залишаються у вашому Google Drive, доки ви не видалите їх на екрані резервних копій у застосунку або в налаштуваннях Drive (Керування додатками). Дані, надіслані ШІ-провайдеру чи біржі, зберігає цей провайдер за власною політикою.</p>
+<h3>Діти</h3>
+<p>Застосунок не призначений спеціально для дітей і свідомо не обробляє дитячих даних.</p>
+<h3>Зміни</h3>
+<p>У разі змін оновлена політика з новою датою буде опублікована за цією адресою.</p>
+<h3>Контакт</h3>
+<p>Osvald.studio26@gmail.com</p>
+</main></body>
+</html>
